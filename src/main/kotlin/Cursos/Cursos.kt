@@ -1,6 +1,10 @@
-class Cursos (val nomeDoCurso: String?,
-              var nomeDoProfessor: String?,
-              var serie: Int){
+package Cursos
+
+import Alunos.Alunos
+
+class Cursos (private val nomeDoCurso: String?,
+              private var nomeDoProfessor: String?,
+              private var serie: Int){
 
     val listaEstudantesMatriculados = mutableListOf<Alunos?>()
 
@@ -47,5 +51,15 @@ class Cursos (val nomeDoCurso: String?,
         }
         println("A maior média desse curso é $melhorMedia")
     }
+
+    fun verificarAluno(alunos: Alunos){
+        if(listaEstudantesMatriculados.contains(alunos)){
+            println("Aluno existe na lista")
+        }else{
+            throw Exception("O aluno não existe")
+        }
+    }
+
+
 
 }

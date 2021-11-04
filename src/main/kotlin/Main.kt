@@ -1,3 +1,6 @@
+import Alunos.Alunos
+import Cursos.Cursos
+
 fun main() {
 
     val caique = Alunos("Caique","Carvalho",
@@ -21,6 +24,13 @@ fun main() {
     println(cursoIngles.listaEstudantesMatriculados.size)
 
     caique.nomeCompleto()
+
+    try{
+        cursoIngles.verificarAluno(caique)
+    }catch(e: Exception){
+        println(e.message)
+    }
+
     println(caique.aprovado)
     caique.passaDeAnoSeAprovado()
 

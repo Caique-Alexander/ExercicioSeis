@@ -1,10 +1,12 @@
+package Alunos
+
 class Alunos (var nome: String?,
-              var sobrenome: String?,
-              var registro: Int) {
+              private var sobrenome: String?,
+              private var registro: Int) {
 
 
     var media = 0.0
-    var ano = 0
+    private var ano = 0
 
     constructor(nome: String?, sobrenome: String?,
                 registro: Int, media: Double) : this(nome, sobrenome, registro){
