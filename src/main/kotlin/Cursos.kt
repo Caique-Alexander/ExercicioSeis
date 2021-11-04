@@ -1,7 +1,51 @@
-class Cursos {
+class Cursos (val nomeDoCurso: String?,
+              var nomeDoProfessor: String?,
+              var serie: Int){
 
-    var nomeDoCurso: String? = null
-    var nomeDoProfessor: String? = null
-    var ano = 0
+    val listaEstudantesMatriculados = mutableListOf<Alunos?>()
+
+    fun mostrarAlunos(){
+        for(i in listaEstudantesMatriculados){
+            println(i?.nome)
+        }
+    }
+
+    fun cadastrar(alunos: Alunos?){
+        listaEstudantesMatriculados.add(alunos)
+        println("Aluno cadastrado com sucesso!")
+    }
+
+    fun cadastrar(alunos: Array<Alunos?>?){
+        if (alunos != null){
+            for(i in alunos){
+                listaEstudantesMatriculados.add(i)
+            }
+        }
+        println("Alunos cadastrados com sucesso!")
+    }
+
+    fun removerAluno(alunos: Alunos){
+        if(listaEstudantesMatriculados.contains(alunos)){
+            listaEstudantesMatriculados.remove(alunos)
+            println("Aluno removido com sucesso!")
+        }else{
+            println("Esse aluno não existe na lista")
+        }
+    }
+
+    fun numAlunosCadastrados(){
+        println("O número de alunos cadastrados no curso é" +
+                "${listaEstudantesMatriculados.size}")
+    }
+
+    fun melhorMedia(){
+        var melhorMedia = listaEstudantesMatriculados[0]?.media
+        for(i in listaEstudantesMatriculados){
+            if(i?.media!!>melhorMedia!!){
+                melhorMedia=i.media
+            }
+        }
+        println("A maior média desse curso é $melhorMedia")
+    }
 
 }

@@ -1,9 +1,19 @@
-class Alunos {
-    var nome: String? = null
-    var sobrenome: String? = null
-    var registro = 0
-    var media = 0
+class Alunos (var nome: String?,
+              var sobrenome: String?,
+              var registro: Int) {
+
+
+    var media = 0.0
     var ano = 0
+
+    constructor(nome: String?, sobrenome: String?,
+                registro: Int, media: Double) : this(nome, sobrenome, registro){
+                this.media = media
+            }
+    constructor(nome: String?, sobrenome: String?,
+                registro: Int, media: Double, ano: Int) : this(nome, sobrenome, registro, media){
+                this.ano = ano
+            }
 
     fun nomeCompleto(){
 
@@ -12,30 +22,18 @@ class Alunos {
     }
 
     val aprovado: Boolean
+        get() {
 
-    get() {
-
-        if(media >= 60) {
-
-            return true
-
-        } else {
-
-            return false
+            return media >= 60
 
         }
 
-    }
-
-    fun passaDeAnoSeAprovado(): Int {
-
-        if(media >= 60){
-
-        println("Parabéns, você passou de ano!")
-
-        }
-
-        return 0
+    fun passaDeAnoSeAprovado(){
+        if (aprovado) {
+            ano += 1
+            println("Parabéns, você passou de ano!")
+        }else
+            println("Reprovado.")
 
     }
 
